@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Dianis 🌿</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-oscuro: #2d5a3d;
+    --verde-medio: #4a7c5c;
+    --verde-claro: #7aad8a;
+    --verde-palido: #c8e6c9;
+    --crema: #faf6f0;
+    --crema-oscuro: #f0e8dc;
+    --dorado: #b8976a;
+    --texto: #2a2a2a;
+    --blanco: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--crema);
+    font-family: 'Lato', sans-serif;
+    color: var(--texto);
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 10% 20%, rgba(122,173,138,0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 80%, rgba(74,124,92,0.10) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(200,230,201,0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cellipse cx='50' cy='80' rx='18' ry='28' fill='%234a7c5c' opacity='0.04' transform='rotate(-30 50 80)'/%3E%3Cellipse cx='200' cy='30' rx='14' ry='22' fill='%232d5a3d' opacity='0.04' transform='rotate(20 200 30)'/%3E%3Cellipse cx='350' cy='120' rx='16' ry='25' fill='%237aad8a' opacity='0.05' transform='rotate(-15 350 120)'/%3E%3Cellipse cx='80' cy='300' rx='20' ry='30' fill='%234a7c5c' opacity='0.04' transform='rotate(40 80 300)'/%3E%3Cellipse cx='300' cy='280' rx='12' ry='20' fill='%232d5a3d' opacity='0.03' transform='rotate(-25 300 280)'/%3E%3Cellipse cx='160' cy='200' rx='15' ry='24' fill='%237aad8a' opacity='0.04' transform='rotate(10 160 200)'/%3E%3Ccircle cx='120' cy='150' r='4' fill='%23b8976a' opacity='0.06'/%3E%3Ccircle cx='280' cy='360' r='3' fill='%23b8976a' opacity='0.06'/%3E%3Ccircle cx='370' cy='50' r='5' fill='%23b8976a' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+  }
+
+  .hero-flores {
+    font-size: 2.5rem;
+    letter-spacing: 12px;
+    margin-bottom: 24px;
+    animation: flotar 3s ease-in-out infinite;
+  }
+
+  @keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .hero-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .hero-titulo span {
+    font-style: italic;
+    color: var(--verde-medio);
+  }
+
+  .hero-subtitulo {
+    margin-top: 16px;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--dorado);
+  }
+
+  .hero-divisor {
+    margin: 32px auto;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--verde-claro), transparent);
+  }
+
+  .hero-mensaje {
+    max-width: 600px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.8;
+    color: var(--verde-oscuro);
+    opacity: 0.85;
+  }
+
+  .hero-scroll {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--verde-claro);
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: bajar 2s ease-in-out infinite;
+  }
+
+  .hero-scroll::after {
+    content: '↓';
+    font-size: 1.2rem;
+  }
+
+  @keyframes bajar {
+    0%, 100% { opacity: 0.4; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(6px); }
+  }
+
+  /* ── TIMELINE ── */
+  .timeline-section {
+    position: relative;
+    z-index: 1;
+    padding: 80px 24px 120px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .timeline-titulo {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--verde-oscuro);
+    margin-bottom: 64px;
+  }
+
+  .timeline-titulo span {
+    display: block;
+    font-weight: 300;
+    font-size: 0.7em;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 8px;
+  }
+
+  .timeline {
+    position: relative;
+    padding: 0 0 40px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, transparent, var(--verde-claro) 5%, var(--verde-claro) 95%, transparent);
+  }
+
+  .item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 72px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .item:nth-child(odd) {
+    flex-direction: row-reverse;
+  }
+
+  .item-dot {
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--verde-oscuro);
+    border: 3px solid var(--crema);
+    box-shadow: 0 0 0 2px var(--verde-claro);
+    z-index: 2;
+    transition: transform 0.3s ease;
+  }
+
+  .item:hover .item-dot {
+    transform: translateX(-50%) scale(1.5);
+  }
+
+  .item-content {
+    width: calc(50% - 40px);
+    background: var(--blanco);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 24px rgba(45,90,61,0.08);
+    border: 1px solid rgba(122,173,138,0.2);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .item-content::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--verde-claro), var(--verde-oscuro));
+  }
+
+  .item:hover .item-content {
+    box-shadow: 0 8px 40px rgba(45,90,61,0.15);
+    transform: translateY(-4px);
+  }
+
+  .item:nth-child(odd) .item-content {
+    margin-left: auto;
+  }
+
+  .item-fecha {
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 6px;
+  }
+
+  .item-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    margin-bottom: 8px;
+  }
+
+  .item-desc {
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 12px;
+  }
+
+  .item-fotos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .item-foto {
+    flex: 1 1 calc(50% - 4px);
+    min-width: 80px;
+    max-width: calc(50% - 4px);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .item-foto:hover { transform: scale(1.03); }
+
+  .item-foto img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+  }
+
+  /* layouts especiales */
+  .item-fotos.count-1 .item-foto { flex: 1 1 100%; max-width: 100%; }
+  .item-fotos.count-3 .item-foto:first-child { flex: 1 1 100%; max-width: 100%; }
+  .item-fotos.count-6 .item-foto,
+  .item-fotos.count-7 .item-foto { flex: 1 1 calc(33.33% - 6px); max-width: calc(33.33% - 6px); }
+  /* evitar que el último item se estire si queda solo */
+  .item-fotos.count-6 .item-foto:last-child:nth-child(3n+1),
+  .item-fotos.count-7 .item-foto:last-child:nth-child(3n+1) { flex: 0 1 calc(33.33% - 6px); }
+  .item-fotos .item-foto:last-child:nth-child(2n+1):not(:first-child) { flex: 0 1 calc(50% - 4px); }
+
+  /* ── MUY PRONTO ── */
+  .muy-pronto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 0;
+  }
+
+  .muy-pronto-circulo {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--crema);
+    border: 2px solid var(--verde-claro);
+    box-shadow: 0 0 0 6px rgba(122,173,138,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    animation: flotar 3s ease-in-out infinite;
+  }
+
+  .muy-pronto-texto {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: var(--verde-oscuro);
+    letter-spacing: 2px;
+  }
+
+  .muy-pronto-texto span {
+    color: var(--verde-claro);
+    animation: parpadeo 1.5s ease-in-out infinite;
+  }
+
+  @keyframes parpadeo {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+
+  .muy-pronto-sub {
+    margin-top: 8px;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--dorado);
+    opacity: 0.8;
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 12px;
+    object-fit: contain;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .lightbox-close:hover { opacity: 1; }
+
+  /* ── FOOTER ── */
+  .footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 60px 24px 80px;
+    background: var(--verde-oscuro);
+    color: var(--crema);
+  }
+
+  .footer-flores {
+    font-size: 2rem;
+    letter-spacing: 8px;
+    margin-bottom: 16px;
+    animation: flotar 3s ease-in-out infinite;
+  }
+
+  .footer-texto {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 0 auto;
+    opacity: 0.9;
+  }
+
+  .footer-firma {
+    margin-top: 24px;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+  }
+
+  .orquidea-deco {
+    position: fixed;
+    z-index: 0;
+    opacity: 0.07;
+    pointer-events: none;
+  }
+
+  .orquidea-deco.top-right {
+    top: -40px;
+    right: -40px;
+    width: 320px;
+    transform: rotate(20deg);
+  }
+
+  .orquidea-deco.bottom-left {
+    bottom: 100px;
+    left: -60px;
+    width: 280px;
+    transform: rotate(-15deg);
+  }
+
+  @media (max-width: 680px) {
+    .timeline::before { left: 20px; }
+    .item, .item:nth-child(odd) { flex-direction: column; padding-left: 50px; }
+    .item-dot { left: 20px; top: 16px; }
+    .item-content, .item:nth-child(odd) .item-content { width: 100%; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<svg class="orquidea-deco top-right" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="100" cy="60" rx="25" ry="50" fill="#2d5a3d" transform="rotate(0 100 60)"/>
+  <ellipse cx="100" cy="60" rx="25" ry="50" fill="#2d5a3d" transform="rotate(72 100 100)"/>
+  <ellipse cx="100" cy="60" rx="25" ry="50" fill="#2d5a3d" transform="rotate(144 100 100)"/>
+  <ellipse cx="100" cy="60" rx="25" ry="50" fill="#2d5a3d" transform="rotate(216 100 100)"/>
+  <ellipse cx="100" cy="60" rx="25" ry="50" fill="#2d5a3d" transform="rotate(288 100 100)"/>
+  <circle cx="100" cy="100" r="15" fill="#4a7c5c"/>
+</svg>
+
+<svg class="orquidea-deco bottom-left" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="100" cy="55" rx="20" ry="45" fill="#4a7c5c" transform="rotate(0 100 100)"/>
+  <ellipse cx="100" cy="55" rx="20" ry="45" fill="#4a7c5c" transform="rotate(60 100 100)"/>
+  <ellipse cx="100" cy="55" rx="20" ry="45" fill="#4a7c5c" transform="rotate(120 100 100)"/>
+  <ellipse cx="100" cy="55" rx="20" ry="45" fill="#4a7c5c" transform="rotate(180 100 100)"/>
+  <ellipse cx="100" cy="55" rx="20" ry="45" fill="#4a7c5c" transform="rotate(240 100 100)"/>
+  <ellipse cx="100" cy="55" rx="20" ry="45" fill="#4a7c5c" transform="rotate(300 100 100)"/>
+  <circle cx="100" cy="100" r="12" fill="#7aad8a"/>
+</svg>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-flores">🌿 🌸 🌿</div>
+  <h1 class="hero-titulo">Feliz cumpleaños,<br><span>Dianis</span></h1>
+  <p class="hero-subtitulo">Una historia de mejores amigos</p>
+  <div class="hero-divisor"></div>
+  <p class="hero-mensaje">
+    "Suena a tan poco tiempo el que llevamos juntos... pero quiero que cuando llegue al final de mi vida, el tiempo que viví sin conocerte sea lo más corto de todo."
+  </p>
+  <div class="hero-scroll">Nuestra historia</div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <h2 class="timeline-titulo">
+    <span>desde el principio</span>
+    Nuestros momentos
+  </h2>
+
+  <div class="timeline">
+
+    <!-- 1: Bachillerato 2021 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">2021 · Bachillerato</p>
+        <h3 class="item-titulo">El comienzo de todo 🌱</h3>
+        <p class="item-desc">Nos conocimos en el bachillerato. Sin saberlo aún, ahí empezaba algo muy especial.</p>
+      </div>
+    </div>
+
+    <!-- 2: Primera foto 21 oct 2022 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">21 de octubre, 2022</p>
+        <h3 class="item-titulo">La foto que no esperábamos 📸</h3>
+        <p class="item-desc">Nuestra primera foto juntos — y ni cuenta nos dimos cuando nos la tomaron.</p>
+        <div class="item-fotos count-1">
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto1.jpg')">
+            <img src="fotos/Foto1.jpg" alt="Primera foto">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3: Forky 21 ene 2023 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">21 de enero, 2023</p>
+        <h3 class="item-titulo">Forky de Toy Story 🎨</h3>
+        <p class="item-desc">La primera pintura que te hice — Forky, de una de tus pelis favoritas. Hecho con todo el cariño del mundo.</p>
+        <div class="item-fotos count-2">
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto3.jpg')"><img src="fotos/Foto3.jpg" alt="Forky 1"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto2.jpg')"><img src="fotos/Foto2.jpg" alt="Forky 2"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4: Tirantes 17 mar 2023 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">17 de marzo, 2023</p>
+        <h3 class="item-titulo">Los tirantes prometidos 🎀</h3>
+        <p class="item-desc">Mis primeros tirantes — y te prometí que no los usaría hasta que saliéramos juntos por primera vez. Una promesa que valía la pena guardar.</p>
+        <div class="item-fotos count-1">
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto4.jpg')"><img src="fotos/Foto4.jpg" alt="Tirantes"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5: Primera salida 12 ene 2024 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">12 de enero, 2024</p>
+        <h3 class="item-titulo">¡Por fin! Nuestra primera salida 🌟</h3>
+        <p class="item-desc">El día que tanto esperábamos. Y sí — salí con mis tirantes. Promesa cumplida.</p>
+        <div class="item-fotos count-6">
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto5.jpg')"><img src="fotos/Foto5.jpg" alt="Salida 1"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto6.jpg')"><img src="fotos/Foto6.jpg" alt="Salida 2"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto8.jpg')"><img src="fotos/Foto8.jpg" alt="Salida 3"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto7.jpg')"><img src="fotos/Foto7.jpg" alt="Salida 4"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto10.jpg')"><img src="fotos/Foto10.jpg" alt="Salida 5"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto9.jpg')"><img src="fotos/Foto9.jpg" alt="Salida 6"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6: Primer collar 2 ago 2024 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">2 de agosto, 2024</p>
+        <h3 class="item-titulo">Nuestro primer collar 💚</h3>
+        <p class="item-desc">El primer collar compartido. Pequeño símbolo de una amistad enorme.</p>
+        <div class="item-fotos count-1">
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto11.jpg')"><img src="fotos/Foto11.jpg" alt="Primer collar"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7: Estudio 1 - 9 ago 2024 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">9 de agosto, 2024</p>
+        <h3 class="item-titulo">Acompañándote a estudiar 📚</h3>
+        <p class="item-desc">Un día contigo mientras ibas a donde estudiabas. A veces los días normales son los más especiales.</p>
+        <div class="item-fotos count-3">
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto12.jpg')"><img src="fotos/Foto12.jpg" alt="Estudio 1"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto14.jpg')"><img src="fotos/Foto14.jpg" alt="Estudio 2"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto13.jpg')"><img src="fotos/Foto13.jpg" alt="Estudio 3"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8: Bob Esponja día 1 - 30 dic 2024 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">30 de diciembre, 2024</p>
+        <h3 class="item-titulo">Bob Esponja · Día 1 🧽🎨</h3>
+        <p class="item-desc">Empezando la segunda pintura para ti — Bob Esponja tomando forma poco a poco.</p>
+        <div class="item-fotos count-3">
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto16.jpeg')"><img src="fotos/Foto16.jpeg" alt="Bob día 1 - foto 1"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto18.jpeg')"><img src="fotos/Foto18.jpeg" alt="Bob día 1 - foto 2"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto17.jpg')"><img src="fotos/Foto17.jpg" alt="Bob día 1 - foto 3"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9: Bob Esponja día 2 - 31 dic 2024 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">31 de diciembre, 2024</p>
+        <h3 class="item-titulo">Bob Esponja · Día 2 🧽✨</h3>
+        <p class="item-desc">Terminando el año terminando la pintura — y terminándola con todo el amor del mundo.</p>
+        <div class="item-fotos count-3">
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto20.jpeg')"><img src="fotos/Foto20.jpeg" alt="Bob día 2 - foto 1"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto21.jpeg')"><img src="fotos/Foto21.jpeg" alt="Bob día 2 - foto 2"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto19.jpg')"><img src="fotos/Foto19.jpg" alt="Bob día 2 - foto 3"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10: Estudio 2 - 13 feb 2025 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">13 de febrero, 2025</p>
+        <h3 class="item-titulo">Otro día juntos 🌿</h3>
+        <p class="item-desc">Otro día acompañándote al estudio. Siempre es un buen día cuando estamos cerca.</p>
+        <div class="item-fotos count-1">
+          <div class="item-foto" onclick="abrirLightbox('fotos/Foto15.jpg')"><img src="fotos/Foto15.jpg" alt="Estudio feb 2025"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11: Hospital 23 dic 2025 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">23 de diciembre, 2025</p>
+        <h3 class="item-titulo">Esperándote en el hospital 🏥</h3>
+        <p class="item-desc">Fui a acompañarte cuando salías de tus horas sociales. Ahí estaba, esperándote.</p>
+        <div class="item-fotos count-2">
+          <div class="item-foto" onclick="abrirLightbox('fotos/20251223_174558.jpg')"><img src="fotos/20251223_174558.jpg" alt="Hospital 1"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/20251223_174548.jpg')"><img src="fotos/20251223_174548.jpg" alt="Hospital 2"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12: Segundo collar 4 ene 2026 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">4 · 6 de enero, 2026</p>
+        <h3 class="item-titulo">Segundo collar y un dibujo 💚✏️</h3>
+        <p class="item-desc">Nuestro segundo collar de la amistad y un dibujo para ti. Dos detalles, un solo sentimiento.</p>
+        <div class="item-fotos count-3">
+          <div class="item-foto" onclick="abrirLightbox('fotos/20260104_074330.jpg')"><img src="fotos/20260104_074330.jpg" alt="Collar 4 ene"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/DSLbBq-kRr4(JPG).jpg')"><img src="fotos/DSLbBq-kRr4(JPG).jpg" alt="Collar dibujo"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/20260106_225108.jpg')"><img src="fotos/20260106_225108.jpg" alt="Collar 6 ene"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13: Show de magia 17 ene 2026 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">17 de enero, 2026</p>
+        <h3 class="item-titulo">Mi show de magia 🎩✨</h3>
+        <p class="item-desc">Te invité a uno de mis shows de magia por primera vez — y usé el pin que tú me regalaste. Ese pin significa mucho para mí.</p>
+        <div class="item-fotos count-4">
+          <div class="item-foto" onclick="abrirLightbox('fotos/IMG-20260117-WA0038.jpg')"><img src="fotos/IMG-20260117-WA0038.jpg" alt="Magia 1"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/IMG-20260117-WA0034.png')"><img src="fotos/IMG-20260117-WA0034.png" alt="Magia 2"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/IMG-20260117-WA0036.png')"><img src="fotos/IMG-20260117-WA0036.png" alt="Magia 3"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/20260117_232939.jpg')"><img src="fotos/20260117_232939.jpg" alt="Magia 4"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14: Pulseras 14 feb 2026 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">14 de febrero, 2026</p>
+        <h3 class="item-titulo">Pulseras, cositas y mucho amor 💚🎀</h3>
+        <p class="item-desc">Un mini proyecto lleno de cariño: muchas pulseras y detallitos hechos especialmente para ti. Cada uno con amor.</p>
+        <div class="item-fotos count-6">
+          <div class="item-foto" onclick="abrirLightbox('fotos/20260206_165112.jpg')"><img src="fotos/20260206_165112.jpg" alt="Pulseras 1"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/20260206_181925.jpg')"><img src="fotos/20260206_181925.jpg" alt="Pulseras 2"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/20260207_153529.jpg')"><img src="fotos/20260207_153529.jpg" alt="Pulseras 3"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/20260207_153700.jpg')"><img src="fotos/20260207_153700.jpg" alt="Pulseras 4"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/20260208_165433.jpg')"><img src="fotos/20260208_165433.jpg" alt="Pulseras 5"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/20260207_153802.jpg')"><img src="fotos/20260207_153802.jpg" alt="Pulseras 6"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15: Feria Feb 2026 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">13 de febrero, 2026</p>
+        <h3 class="item-titulo">La feria 🎡</h3>
+        <p class="item-desc">Un día en la feria juntos — luces, risas y los mejores recuerdos.</p>
+        <div class="item-fotos count-7">
+          <div class="item-foto" onclick="abrirLightbox('fotos/IMG_20260213_194728.jpg')"><img src="fotos/IMG_20260213_194728.jpg" alt="Feria 1"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/IMG_20260213_183555.jpg')"><img src="fotos/IMG_20260213_183555.jpg" alt="Feria 2"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/IMG_20260213_182005.jpg')"><img src="fotos/IMG_20260213_182005.jpg" alt="Feria 3"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/20260213_190106.jpg')"><img src="fotos/20260213_190106.jpg" alt="Feria 4"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/20260213_190121.jpg')"><img src="fotos/20260213_190121.jpg" alt="Feria 5"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/20260213_190320.jpg')"><img src="fotos/20260213_190320.jpg" alt="Feria 6"></div>
+          <div class="item-foto" onclick="abrirLightbox('fotos/20260213_190328.jpg')"><img src="fotos/20260213_190328.jpg" alt="Feria 7"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MUY PRONTO -->
+    <div class="muy-pronto">
+      <div class="muy-pronto-circulo">🌿</div>
+      <p class="muy-pronto-texto">muy pronto<span>...</span></p>
+      <p class="muy-pronto-sub">la historia continúa</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-flores">🌸 🌿 🌸</div>
+  <p class="footer-texto">
+    "Suena a tan poco tiempo el que llevamos juntos... pero quiero que cuando llegue al final de mi vida, el tiempo que viví sin conocerte sea lo más corto de todo."
+  </p>
+  <p class="footer-firma">Con todo mi cariño · Para Dianis 💚</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="cerrarLightbox()">✕</button>
+  <img src="" id="lightbox-img" alt="">
+</div>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.item').forEach(el => observer.observe(el));
+
+  // Lightbox
+  function abrirLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function cerrarLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) cerrarLightbox();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') cerrarLightbox();
+  });
+</script>
+</body>
+</html>
